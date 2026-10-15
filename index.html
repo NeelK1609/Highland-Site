@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Highland Sky & Height</title>
-<meta name="description" content="Highland Sky and Highland Height: 2 & 3 BHK homes and shops in Nana Chiloda, Ahmedabad. Walk through a home in 3D, see every floor plan and download the brochures.">
+<meta name="description" content="Highland Sky and Highland Height: 2 & 3 BHK homes and shops in Nana Chiloda, Ahmedabad. See every home, its floor plan and room sizes, and download the brochures.">
 <meta property="og:title" content="Highland Sky & Height · Nana Chiloda, Ahmedabad">
-<meta property="og:description" content="2 & 3 BHK homes and shops. Walk through a home in 3D and download the brochures.">
+<meta property="og:description" content="2 & 3 BHK homes and shops. See every floor plan and download the brochures.">
 <meta property="og:image" content="assets/img/height-corner.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,14 +34,14 @@ h1,h2,h3{font-family:var(--f-display);font-weight:500;line-height:1.05;margin:0;
 h2{font-size:clamp(38px,5.4vw,64px)}
 h3{font-size:clamp(28px,3vw,36px)}
 .lede{color:var(--ink-soft);font-size:17px;max-width:56ch;margin:18px 0 0}
-section{padding:clamp(80px,11vw,140px) 0}
-.head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:clamp(36px,5vw,60px)}
+section{padding:clamp(72px,10vw,130px) 0;scroll-margin-top:60px}
+.head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:clamp(30px,4.5vw,54px)}
 .head h2{margin-top:14px}
+svg.i{width:16px;height:16px;flex:none}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;border:1px solid transparent;
-  font:600 14px/1 var(--f-body);letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s}
-.btn svg{width:16px;height:16px;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;border:1px solid transparent;
+  font:600 14px/1 var(--f-body);letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
 .btn-solid{background:var(--wine);color:#fff}
 .btn-solid:hover{background:var(--wine-dk)}
 .btn-line{border-color:currentColor;background:transparent}
@@ -50,6 +50,15 @@ section{padding:clamp(80px,11vw,140px) 0}
 .btn-light:hover{background:var(--gold-soft)}
 .btn-ghost-light{border-color:rgba(255,255,255,.7);color:#fff}
 .btn-ghost-light:hover{background:#fff;color:var(--ink)}
+.btn-gold{background:var(--gold);color:#1e1a17}
+.btn-gold:hover{background:var(--gold-soft)}
+.btn-sm{padding:11px 16px;font-size:13px}
+
+/* segmented filter */
+.seg{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--card);max-width:100%;overflow-x:auto;scrollbar-width:none}
+.seg::-webkit-scrollbar{display:none}
+.seg button{flex:none;border:0;background:none;padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;color:var(--ink-soft);white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 
 /* nav */
 .nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,box-shadow .35s,color .35s;color:#fff}
@@ -82,18 +91,19 @@ section{padding:clamp(80px,11vw,140px) 0}
 
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;padding:0;overflow:hidden;background:#2b2a2a}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 30%;animation:drift 22s ease-out both}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 30%;animation:drift 22s ease-out both}
 @keyframes drift{from{transform:scale(1.08)}to{transform:scale(1)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,16,14,.72) 0%,rgba(20,16,14,.42) 38%,rgba(20,16,14,0) 62%),linear-gradient(180deg,rgba(20,16,14,.4) 0%,rgba(20,16,14,0) 22%,rgba(20,16,14,0) 55%,rgba(20,16,14,.65) 100%)}
-.hero .eyebrow{color:rgba(255,255,255,.85)}
-@media (max-width:700px){.hero::after{background:linear-gradient(180deg,rgba(20,16,14,.5) 0%,rgba(20,16,14,.4) 30%,rgba(20,16,14,.85) 100%)}}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(48px,8vh,96px)}
-.hero h1{font-size:clamp(48px,8.4vw,112px);font-weight:400;max-width:12ch;line-height:.98}
+.hero .eyebrow{color:rgba(255,255,255,.85)}
+.hero h1{font-size:clamp(48px,8.4vw,112px);font-weight:400;max-width:12ch;line-height:.98;margin-top:14px}
 .hero h1 em{font-style:italic;color:var(--gold-soft)}
 .hero p{font-size:clamp(16px,1.6vw,19px);max-width:46ch;margin:22px 0 32px;color:rgba(255,255,255,.88)}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
 .hero .meta{display:flex;flex-wrap:wrap;gap:10px 34px;margin-top:clamp(36px,6vh,64px);padding-top:22px;border-top:1px solid rgba(255,255,255,.28);font-size:13.5px;color:rgba(255,255,255,.82)}
 .hero .meta b{display:block;font:500 26px/1.1 var(--f-display);color:#fff;letter-spacing:.01em}
+@media (max-width:700px){.hero::after{background:linear-gradient(180deg,rgba(20,16,14,.5) 0%,rgba(20,16,14,.4) 30%,rgba(20,16,14,.85) 100%)}}
+@media (max-width:520px){.hero .meta{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}.hero h1{font-size:clamp(44px,13vw,60px)}.hero .ctas .btn{flex:1 1 100%}}
 
 /* projects */
 .projects{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
@@ -111,82 +121,74 @@ section{padding:clamp(80px,11vw,140px) 0}
 .project p{margin:0;color:var(--ink-soft)}
 .project .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}
 @media (max-width:820px){.projects{grid-template-columns:1fr}}
-@media (max-width:520px){.hero .meta{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}.hero h1{font-size:clamp(44px,13vw,60px)}.hero .ctas .btn{flex:1 1 100%;justify-content:center}}
-@media (max-width:600px){#planGrid{grid-template-columns:1fr 1fr;gap:12px}.plan .im{padding:8px}.plan .cap{padding:12px;flex-direction:column;gap:4px}.plan .cap b{font-size:20px}}
 
-/* walkthrough */
-.walk{background:#191614;color:#f3ede4}
-.walk .eyebrow{color:var(--gold-soft)}
-.walk .lede{color:rgba(243,237,228,.7)}
-.stage{position:relative;height:min(78vh,760px);min-height:460px;border-radius:var(--radius);overflow:hidden;background:#24201d;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.stage.full{position:fixed;inset:0;z-index:100;height:100vh;height:100dvh;min-height:0;border-radius:0;touch-action:none}
-.xbtn{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;z-index:4;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(20,17,15,.62);color:#fff;font-size:18px;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.stage.on .xbtn{display:flex}
-.stage.on .mini{top:calc(max(14px,env(safe-area-inset-top)) + 56px)}
-.stage.full .room{top:max(14px,env(safe-area-inset-top))}
-.stick{touch-action:none}
-.dock{touch-action:pan-x}
-.touch .caption{bottom:212px}
-.hint .tp{display:none}
-@media (pointer:coarse){.hint .kb{display:none}.hint .tp{display:inline}}
-@media (max-width:640px){.stage{height:64svh;min-height:420px}}
-.stage canvas{display:block;width:100%;height:100%;cursor:grab}
-.stage canvas:active{cursor:grabbing}
-.veil{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;z-index:3;
-  background:linear-gradient(rgba(25,22,20,.55),rgba(25,22,20,.75)),url(assets/img/sky-interior.jpg) center/cover;transition:opacity .6s}
-.veil.gone{opacity:0;pointer-events:none}
-.veil h3{color:#fff;font-size:clamp(32px,4.4vw,52px)}
-.veil p{color:rgba(255,255,255,.8);max-width:44ch;margin:12px auto 26px}
-.veil small{display:block;margin-top:16px;color:rgba(255,255,255,.6);font-size:13px}
-.hud{position:absolute;z-index:2;pointer-events:none}
-.room{top:18px;left:18px;padding:12px 16px;background:rgba(20,17,15,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:var(--radius);transition:opacity .4s}
-.room b{display:block;font:500 24px/1.1 var(--f-display);color:#fff}
-.room span{font-size:12.5px;color:rgba(255,255,255,.7);letter-spacing:.04em}
-.mini{top:18px;right:18px;width:min(168px,30vw);padding:10px;background:rgba(20,17,15,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:var(--radius)}
-.mini svg{display:block;width:100%;height:auto}
-.caption{left:50%;bottom:86px;transform:translateX(-50%);max-width:min(560px,86%);text-align:center;font:italic 400 clamp(18px,2vw,22px)/1.35 var(--f-display);color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.7);opacity:0;transition:opacity .5s}
-.caption.on{opacity:1}
-.dock{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;gap:8px;align-items:center;padding:14px 14px max(14px,env(safe-area-inset-bottom));overflow-x:auto;scrollbar-width:none;background:linear-gradient(transparent,rgba(15,12,10,.6))}
-.dock::-webkit-scrollbar{display:none}
-.chip{flex:none;padding:10px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(20,17,15,.5);color:#fff;font:500 13px/1 var(--f-body);cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .2s,border-color .2s}
-.chip:hover{background:rgba(255,255,255,.16)}
-.chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#1e1a17}
-.chip.tour{background:#fff;color:#1e1a17;border-color:#fff}
-.chip.tour[aria-pressed="true"]{background:var(--gold);border-color:var(--gold)}
-.sep{flex:none;width:1px;height:22px;background:rgba(255,255,255,.25);margin:0 4px}
-.stick{position:absolute;left:22px;bottom:84px;width:108px;height:108px;border-radius:50%;z-index:2;border:1px solid rgba(255,255,255,.35);background:rgba(20,17,15,.35);display:none}
-.stick i{position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(255,255,255,.85)}
-.touch .stick{display:block}
-.hint{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:18px;font-size:13.5px;color:rgba(243,237,228,.62)}
-.hint kbd{font:600 11.5px/1 var(--f-body);padding:4px 7px;border:1px solid rgba(243,237,228,.3);border-radius:4px;color:#f3ede4}
-@media (max-width:640px){.mini{width:110px}.room b{font-size:20px}.caption{bottom:78px}}
+/* gallery slider */
+.slider{position:relative;border-radius:var(--radius);overflow:hidden;background:#d9d2c6}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;margin:0;aspect-ratio:16/9;position:relative;cursor:zoom-in}
+.slide img{width:100%;height:100%;object-fit:cover}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 20px -8px rgba(0,0,0,.4);transition:background .2s}
+.arrow:hover{background:#fff}
+.arrow svg{width:20px;height:20px}
+.arrow.prev{left:18px}.arrow.next{right:18px}
+.sl-cap{position:absolute;left:0;right:0;bottom:0;z-index:1;display:flex;justify-content:space-between;align-items:end;gap:16px;padding:40px 22px 18px;color:#fff;background:linear-gradient(transparent,rgba(15,12,10,.6));pointer-events:none}
+.sl-cap b{font:500 22px/1.2 var(--f-display)}
+.sl-cap span{font-size:13px;font-weight:600;letter-spacing:.08em;white-space:nowrap}
+.thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.thumbs button{flex:0 0 auto;width:128px;aspect-ratio:3/2;padding:0;border:2px solid transparent;border-radius:3px;overflow:hidden;cursor:pointer;background:var(--bg-2);opacity:.6;transition:opacity .2s,border-color .2s}
+.thumbs button:hover{opacity:.9}
+.thumbs button[aria-current="true"]{opacity:1;border-color:var(--wine)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+@media (max-width:700px){.slide{aspect-ratio:4/3}.arrow{width:40px;height:40px}.arrow.prev{left:10px}.arrow.next{right:10px}.thumbs button{width:92px}.sl-cap b{font-size:18px}}
 
-/* plans */
-.tabs{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
-.tabs button{border:0;background:none;padding:10px 20px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;color:var(--ink-soft)}
-.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
-.plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:clamp(16px,2vw,28px)}
-.plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:0;text-align:left;cursor:zoom-in;overflow:hidden;transition:box-shadow .3s,transform .3s}
-.plan:hover{box-shadow:0 18px 40px -24px rgba(60,40,20,.35);transform:translateY(-2px)}
-.plan .im{aspect-ratio:4/5;background:#fff;display:grid;place-items:center;padding:14px}
-.plan .im img{max-height:100%;width:auto;object-fit:contain}
-.plan .cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 18px;border-top:1px solid var(--line)}
-.plan .cap b{font:500 22px/1 var(--f-display)}
-.plan .cap span{font-size:12.5px;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase}
+/* homes */
+.homes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:clamp(16px,2vw,28px)}
+.home{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s,transform .3s}
+.home:hover{box-shadow:0 22px 44px -28px rgba(60,40,20,.4);transform:translateY(-2px)}
+.home .pic{aspect-ratio:5/4;background:#fff;padding:16px;display:grid;place-items:center;border:0;cursor:zoom-in;border-bottom:1px solid var(--line)}
+.home .pic img{max-height:100%;width:auto;object-fit:contain}
+.home .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.home .proj{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.home h3{font-size:30px}
+.home h3 small{font:500 15px/1 var(--f-body);color:var(--ink-faint);margin-left:6px;letter-spacing:.02em}
+.home ul{list-style:none;margin:0;padding:0;font-size:14px;color:var(--ink-soft)}
+.home li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line)}
+.home li b{font-weight:600;color:var(--ink);white-space:nowrap}
+.home .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+.home .row .btn{flex:1 1 auto}
 
-/* gallery */
-.gallery{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(120px,14vw,190px);gap:clamp(8px,1.2vw,16px)}
-.gallery button{padding:0;border:0;background:var(--bg-2);overflow:hidden;cursor:zoom-in;border-radius:var(--radius);position:relative}
-.gallery img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-.gallery button:hover img{transform:scale(1.05)}
-.gallery figcaption{position:absolute;left:12px;bottom:10px;font-size:12.5px;font-weight:600;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6);opacity:0;transition:opacity .3s}
-.gallery button:hover figcaption,.gallery button:focus-visible figcaption{opacity:1}
-.g1{grid-column:span 7;grid-row:span 3}.g2{grid-column:span 5;grid-row:span 2}.g3{grid-column:span 5;grid-row:span 1}
-.g4{grid-column:span 4;grid-row:span 2}.g5{grid-column:span 4;grid-row:span 2}.g6{grid-column:span 4;grid-row:span 2}
-.g7{grid-column:span 6;grid-row:span 2}.g8{grid-column:span 6;grid-row:span 2}
-@media (max-width:760px){.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
-  .gallery button{grid-column:span 1!important;grid-row:span 1!important}.gallery .g1,.gallery .g8{grid-column:span 2!important;grid-row:span 2!important}
-  .gallery figcaption{opacity:1}}
+/* dialogs */
+dialog{border:0;padding:0;color:var(--ink)}
+dialog::backdrop{background:rgba(18,14,12,.82)}
+.x{position:absolute;top:12px;right:12px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.sheet{width:min(1120px,94vw);max-height:92vh;border-radius:6px;background:var(--card);overflow:hidden}
+.sheet[open]{display:grid;grid-template-columns:1.25fr 1fr}
+.sheet .viz{background:#fff;display:flex;flex-direction:column;min-height:0;border-right:1px solid var(--line)}
+.sheet .viz .seg{margin:16px;align-self:flex-start}
+.sheet .viz .im{flex:1;min-height:0;display:grid;place-items:center;padding:0 20px 20px}
+.sheet .viz img{max-width:100%;max-height:calc(92vh - 110px);object-fit:contain;cursor:zoom-in}
+.sheet .info{padding:28px 30px 30px;overflow-y:auto;max-height:92vh;display:flex;flex-direction:column;gap:14px}
+.sheet .info h3{font-size:clamp(32px,3.4vw,42px);padding-right:44px}
+.sheet table{width:100%;border-collapse:collapse;font-size:14.5px}
+.sheet td{padding:9px 0;border-top:1px solid var(--line)}
+.sheet td+td{text-align:right;font-weight:600;white-space:nowrap}
+.sheet .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.sheet small{color:var(--ink-faint);font-size:12.5px}
+@media (max-width:820px){
+  .sheet{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;border-radius:0;margin:0}
+  .sheet[open]{display:block;overflow-y:auto}
+  .sheet .viz{border-right:0;border-bottom:1px solid var(--line)}
+  .sheet .viz img{max-height:58vh}
+  .sheet .info{max-height:none;padding:22px var(--gutter) calc(30px + env(safe-area-inset-bottom))}
+}
+.tour{width:min(1280px,96vw);height:min(820px,88vh);background:#111;border-radius:6px;overflow:hidden}
+.tour iframe{width:100%;height:100%;border:0;display:block}
+@media (max-width:820px){.tour{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;border-radius:0}}
+dialog.lb{background:transparent;max-width:min(1400px,96vw);max-height:94vh;overflow:visible}
+dialog.lb img{max-width:min(1400px,96vw);max-height:86vh;width:auto;margin:0 auto;border-radius:2px;background:#fff}
+dialog.lb p{color:#fff;text-align:center;margin:12px 0 0;font:italic 400 20px/1.3 var(--f-display)}
+dialog.lb .x{position:fixed;background:rgba(0,0,0,.35);border-color:rgba(255,255,255,.4);color:#fff}
 
 /* amenities */
 .amen{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
@@ -199,7 +201,7 @@ section{padding:clamp(80px,11vw,140px) 0}
 @media (max-width:420px){.alist{grid-template-columns:1fr}}
 
 /* specs */
-.specs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 40px;margin-top:10px}
+.specs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 40px}
 .specs div{padding:22px 0;border-top:1px solid var(--line)}
 .specs b{display:block;font:500 22px/1.2 var(--f-display);margin-bottom:6px}
 .specs p{margin:0;color:var(--ink-soft);font-size:14.5px}
@@ -210,10 +212,9 @@ section{padding:clamp(80px,11vw,140px) 0}
 .bcard{display:grid;grid-template-columns:minmax(120px,38%) 1fr;gap:clamp(18px,2.4vw,32px);align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(16px,2vw,24px)}
 .bcard img{width:100%;border-radius:2px;box-shadow:0 22px 40px -22px rgba(40,20,10,.55),0 2px 6px rgba(40,20,10,.12);transform:rotate(-1.5deg);transition:transform .4s}
 .bcard:hover img{transform:rotate(0) translateY(-3px)}
-.bcard h3{font-size:clamp(26px,2.6vw,32px)}
+.bcard h3{font-size:clamp(26px,2.6vw,32px);margin-top:10px}
 .bcard p{margin:8px 0 18px;color:var(--ink-soft);font-size:14.5px}
 .bcard .row{display:flex;flex-wrap:wrap;gap:10px}
-.bcard .btn{padding:12px 18px;font-size:13px}
 @media (max-width:900px){.bgrid{grid-template-columns:1fr}}
 @media (max-width:440px){.bcard{grid-template-columns:1fr}.bcard img{max-width:200px}}
 
@@ -227,7 +228,7 @@ section{padding:clamp(80px,11vw,140px) 0}
 .dist{list-style:none;margin:0;padding:0}
 .dist li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
 .dist li b{font:500 28px/1 var(--f-display);color:var(--wine)}
-.dist small{display:block;color:var(--ink-faint);font-size:13px;margin-top:14px}
+.note{display:block;color:var(--ink-faint);font-size:13px;margin-top:14px}
 @media (max-width:820px){.loc{grid-template-columns:1fr}}
 
 /* contact */
@@ -235,19 +236,19 @@ section{padding:clamp(80px,11vw,140px) 0}
 .contact>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .contact::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,18,16,.86),rgba(25,18,16,.45))}
 .contact .wrap{position:relative;z-index:1}
-.contact h2{max-width:14ch}
+.contact h2{max-width:14ch;margin-top:14px}
 .contact p{color:rgba(255,255,255,.82);max-width:46ch;margin:18px 0 30px}
 .contact .row{display:flex;flex-wrap:wrap;gap:12px}
-footer{padding:44px 0 calc(44px + env(safe-area-inset-bottom));font-size:13px;color:var(--ink-faint)}
+footer{padding:44px 0 calc(90px + env(safe-area-inset-bottom));font-size:13px;color:var(--ink-faint)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px}
 footer p{margin:0;max-width:70ch}
 
-/* lightbox */
-dialog.lb{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);max-height:92vh;overflow:visible}
-dialog.lb::backdrop{background:rgba(18,14,12,.9)}
-dialog.lb img{max-width:min(1200px,94vw);max-height:84vh;width:auto;margin:0 auto;border-radius:2px;background:#fff}
-dialog.lb p{color:#fff;text-align:center;margin:12px 0 0;font:italic 400 20px/1.3 var(--f-display)}
-dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.3);color:#fff;font-size:22px;cursor:pointer}
+/* floating WhatsApp */
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:40;display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:999px;background:var(--wine);color:#fff;text-decoration:none;font:600 14px/1 var(--f-body);box-shadow:0 12px 30px -10px rgba(60,10,30,.6);transition:transform .3s,opacity .3s}
+.fab svg{width:20px;height:20px}
+.fab:hover{background:var(--wine-dk)}
+.fab.hide{opacity:0;transform:translateY(20px);pointer-events:none}
+@media (max-width:520px){.fab span{display:none}.fab{padding:15px}}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
@@ -255,12 +256,20 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none;transition:none}
-  .hero img{animation:none}
+  .hero>img{animation:none}
   *{transition-duration:.01ms!important}
 }
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2Z"/></symbol>
+  <symbol id="i-360" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="12" rx="10" ry="4"/><path d="M12 2v4M12 18v4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></symbol>
+  <symbol id="i-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 5-7 7 7 7"/></symbol>
+  <symbol id="i-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 5 7 7-7 7"/></symbol>
+</svg>
 
 <header class="nav" id="nav">
   <div class="wrap">
@@ -270,8 +279,8 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
     </a>
     <ul class="links" id="navLinks">
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#walkthrough">Walk through</a></li>
-      <li><a href="#plans">Floor plans</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#homes">Homes</a></li>
       <li><a href="#amenities">Amenities</a></li>
       <li><a href="#location">Location</a></li>
     </ul>
@@ -290,12 +299,8 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
     <h1>Modern homes, <em>classic charm.</em></h1>
     <p>Spacious 2 &amp; 3 BHK homes and street-front shops across two projects, Highland Sky and Highland Height.</p>
     <div class="ctas">
-      <a class="btn btn-light" href="#walkthrough">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
-        Walk through a home</a>
-      <a class="btn btn-ghost-light" href="#brochures">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>
-        Download brochure</a>
+      <a class="btn btn-light" href="#homes">Explore the homes</a>
+      <a class="btn btn-ghost-light" href="#brochures"><svg class="i"><use href="#i-dl"/></svg>Download brochure</a>
     </div>
     <div class="meta">
       <div><b>2</b>projects</div>
@@ -321,9 +326,8 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
           <div class="facts"><div><b>2 &amp; 3</b><span>BHK homes</span></div><div><b>18</b><span>shops</span></div><div><b>30 m</b><span>road frontage</span></div></div>
           <p>One tower in two wings with four lifts, solar panels and a landscaped garden, facing a 30 m wide road.</p>
           <div class="row">
-            <a class="btn btn-solid" href="brochures/highland-sky-brochure.pdf" download>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>Brochure</a>
-            <a class="btn btn-line" href="#plans" data-plan-tab="sky">Floor plans</a>
+            <a class="btn btn-solid" href="brochures/highland-sky-brochure.pdf" download><svg class="i"><use href="#i-dl"/></svg>Brochure</a>
+            <a class="btn btn-line" href="#homes" data-homes="sky">See the homes</a>
           </div>
         </div>
       </article>
@@ -335,9 +339,8 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
           <div class="facts"><div><b>2 &amp; 3</b><span>BHK homes</span></div><div><b>9</b><span>retail shops</span></div><div><b>2</b><span>towers</span></div></div>
           <p>Two towers with hollow plinth and basement parking, a meditation space and a garden behind the gate.</p>
           <div class="row">
-            <a class="btn btn-solid" href="brochures/highland-height-brochure.pdf" download>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>Brochure</a>
-            <a class="btn btn-line" href="#plans" data-plan-tab="height">Floor plans</a>
+            <a class="btn btn-solid" href="brochures/highland-height-brochure.pdf" download><svg class="i"><use href="#i-dl"/></svg>Brochure</a>
+            <a class="btn btn-line" href="#homes" data-homes="height">See the homes</a>
           </div>
         </div>
       </article>
@@ -345,61 +348,37 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
   </div>
 </section>
 
-<section class="walk" id="walkthrough">
-  <div class="wrap">
-    <div class="head rv">
-      <div><div class="eyebrow">Virtual walkthrough</div><h2>Step inside a<br>2 BHK home</h2></div>
-      <p class="lede">Highland Height, Type A, built to the room sizes in the brochure. Walk room to room, or let the guided tour show you around.</p>
-    </div>
-    <div class="stage" id="stage">
-      <div class="veil" id="veil">
-        <div>
-          <h3>Come on in</h3>
-          <p>Drawing room, dining, kitchen, two bedrooms and a balcony to explore.</p>
-          <button class="btn btn-light" id="enter" type="button">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5v14l11-7z"/></svg>
-            Start the tour</button>
-          <small id="veilNote">Loads a 3D scene of about 1 MB</small>
-        </div>
-      </div>
-      <button class="xbtn" id="xbtn" type="button" aria-label="Full screen">⤢</button>
-      <div class="hud room" id="room"><b>Foyer</b><span>5'2" × 7'4"</span></div>
-      <div class="hud mini" id="mini" aria-hidden="true"></div>
-      <div class="hud caption" id="caption"></div>
-      <div class="stick" id="stick" aria-hidden="true"><i></i></div>
-      <div class="dock" id="dock" role="toolbar" aria-label="Walkthrough controls">
-        <button class="chip tour" id="tourBtn" type="button" aria-pressed="false">▶ Guided tour</button>
-        <span class="sep"></span>
-      </div>
-    </div>
-    <div class="hint">
-      <span class="kb"><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> or arrow keys to walk</span>
-      <span class="kb">Drag to look around</span>
-      <span class="tp">Opens full screen. Use the joystick to walk and swipe to look around</span>
-      <span>Pick a room at the bottom of the view to walk there</span>
-    </div>
-  </div>
-</section>
-
-<section id="plans">
-  <div class="wrap">
-    <div class="head rv">
-      <div><div class="eyebrow">Floor plans</div><h2>Find your layout</h2></div>
-      <div class="tabs" role="tablist" aria-label="Project">
-        <button role="tab" id="tab-height" aria-selected="true" data-tab="height">Highland Height</button>
-        <button role="tab" id="tab-sky" aria-selected="false" data-tab="sky">Highland Sky</button>
-      </div>
-    </div>
-    <div class="plans" id="planGrid" role="tabpanel"></div>
-  </div>
-</section>
-
-<section id="photos" style="padding-top:0;scroll-margin-top:96px">
+<section id="gallery" style="padding-top:0">
   <div class="wrap">
     <div class="head rv">
       <div><div class="eyebrow">Gallery</div><h2>A closer look</h2></div>
+      <div class="seg" role="group" aria-label="Show photos of">
+        <button type="button" data-gf="all" aria-pressed="true">All</button>
+        <button type="button" data-gf="height" aria-pressed="false">Highland Height</button>
+        <button type="button" data-gf="sky" aria-pressed="false">Highland Sky</button>
+      </div>
     </div>
-    <div class="gallery" id="gallery"></div>
+    <div class="slider rv" aria-roledescription="carousel" aria-label="Project photos">
+      <div class="track" id="track" tabindex="0"></div>
+      <button class="arrow prev" id="prev" type="button" aria-label="Previous photo"><svg><use href="#i-l"/></svg></button>
+      <button class="arrow next" id="next" type="button" aria-label="Next photo"><svg><use href="#i-r"/></svg></button>
+      <div class="sl-cap"><b id="slCap"></b><span id="slNum"></span></div>
+    </div>
+    <div class="thumbs" id="thumbs" aria-label="Choose a photo"></div>
+  </div>
+</section>
+
+<section id="homes" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="head rv">
+      <div><div class="eyebrow">The homes</div><h2>Find your home</h2></div>
+      <div class="seg" role="group" aria-label="Show homes in">
+        <button type="button" data-hf="all" aria-pressed="true">All</button>
+        <button type="button" data-hf="height" aria-pressed="false">Highland Height</button>
+        <button type="button" data-hf="sky" aria-pressed="false">Highland Sky</button>
+      </div>
+    </div>
+    <div class="homes" id="homeGrid"></div>
   </div>
 </section>
 
@@ -448,12 +427,11 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
         <img src="assets/img/cover-sky.jpg" alt="Highland Sky brochure cover" loading="lazy">
         <div>
           <div class="eyebrow">8 spreads · PDF · 7.5 MB</div>
-          <h3 style="margin-top:10px">Highland Sky</h3>
+          <h3>Highland Sky</h3>
           <p>Elevations, ground and typical floor layouts, unit plans A, B and C, and specifications.</p>
           <div class="row">
-            <a class="btn btn-solid" href="brochures/highland-sky-brochure.pdf" download>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>Download</a>
-            <a class="btn btn-line" href="brochures/highland-sky-brochure.pdf" target="_blank" rel="noopener">View</a>
+            <a class="btn btn-solid btn-sm" href="brochures/highland-sky-brochure.pdf" download><svg class="i"><use href="#i-dl"/></svg>Download</a>
+            <a class="btn btn-line btn-sm" href="brochures/highland-sky-brochure.pdf" target="_blank" rel="noopener">View</a>
           </div>
         </div>
       </article>
@@ -461,12 +439,11 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
         <img src="assets/img/cover-height.jpg" alt="Highland Height brochure cover" loading="lazy">
         <div>
           <div class="eyebrow">12 spreads · PDF · 7 MB</div>
-          <h3 style="margin-top:10px">Highland Height</h3>
+          <h3>Highland Height</h3>
           <p>Renders, site and typical floor plans, unit plans A to D, amenities and the location map.</p>
           <div class="row">
-            <a class="btn btn-solid" href="brochures/highland-height-brochure.pdf" download>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>Download</a>
-            <a class="btn btn-line" href="brochures/highland-height-brochure.pdf" target="_blank" rel="noopener">View</a>
+            <a class="btn btn-solid btn-sm" href="brochures/highland-height-brochure.pdf" download><svg class="i"><use href="#i-dl"/></svg>Download</a>
+            <a class="btn btn-line btn-sm" href="brochures/highland-height-brochure.pdf" target="_blank" rel="noopener">View</a>
           </div>
         </div>
       </article>
@@ -496,7 +473,7 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
         <li><span>Delhi Public School</span><b>10 km</b></li>
         <li><span>Gift City</span><b>11 km</b></li>
       </ul>
-      <small class="dist">Distances from Highland Height, as listed in its brochure.</small>
+      <small class="note">Distances from Highland Height, as listed in its brochure.</small>
     </div>
   </div>
 </section>
@@ -505,15 +482,11 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
   <img src="assets/img/height-gate.jpg" alt="" loading="lazy">
   <div class="wrap rv">
     <div class="eyebrow" style="color:var(--gold-soft)">Visit us</div>
-    <h2 style="margin-top:14px">See it for yourself</h2>
+    <h2>See it for yourself</h2>
     <p>Book a site visit, or ask about prices and availability. We usually reply within the day.</p>
     <div class="row">
-      <a class="btn btn-light" href="https://wa.me/917043404301?text=Hello%2C%20I%27d%20like%20to%20book%20a%20site%20visit%20at%20Highland." target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2Z"/></svg>
-        WhatsApp us</a>
-      <a class="btn btn-ghost-light" href="tel:+917043404301">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
-        +91 70434 04301</a>
+      <a class="btn btn-light" href="https://wa.me/917043404301?text=Hello%2C%20I%27d%20like%20to%20book%20a%20site%20visit%20at%20Highland." target="_blank" rel="noopener"><svg class="i" style="width:18px;height:18px"><use href="#i-wa"/></svg>WhatsApp us</a>
+      <a class="btn btn-ghost-light" href="tel:+917043404301">Call +91 70434 04301</a>
     </div>
   </div>
 </section>
@@ -522,83 +495,210 @@ dialog.lb .x{position:fixed;top:14px;right:14px;width:44px;height:44px;border-ra
 <footer>
   <div class="wrap">
     <p>Highland Sky by JEEL Developers · Z-Axis Architects · Kanhai Engineers. Highland Height by JAL Developers · Innovatiq Architects.</p>
-    <p>Highland Sky RERA reg. no. PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA13405/290424/311226 · gujrera.gujarat.gov.in. Images are artist's impressions. The 3D walkthrough is illustrative and furniture is shown for styling only.</p>
+    <p>Highland Sky RERA reg. no. PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA13405/290424/311226 · gujrera.gujarat.gov.in. Images are artist's impressions. Room sizes are as printed in the brochures.</p>
   </div>
 </footer>
 
+<a class="fab" id="fab" href="https://wa.me/917043404301?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20Highland." target="_blank" rel="noopener" aria-label="WhatsApp us"><svg><use href="#i-wa"/></svg><span>Book a visit</span></a>
+
+<dialog class="sheet" id="unitDlg" aria-labelledby="unitTitle"></dialog>
+<dialog class="tour" id="tourDlg" aria-label="Virtual tour">
+  <button class="x" type="button" aria-label="Close tour" style="background:rgba(0,0,0,.45);color:#fff;border-color:rgba(255,255,255,.4)" data-close>×</button>
+  <iframe id="tourFrame" title="Virtual tour" allow="fullscreen; xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen></iframe>
+</dialog>
 <dialog class="lb" id="lb">
-  <button class="x" type="button" aria-label="Close" onclick="this.closest('dialog').close()">×</button>
+  <button class="x" type="button" aria-label="Close" data-close>×</button>
   <img id="lbImg" alt="">
   <p id="lbCap"></p>
 </dialog>
 
 <script>
-const PLANS={
-  height:[
-    {img:"plan-height-a",bhk:"2 BHK",type:"Type A"},
-    {img:"plan-height-b",bhk:"3 BHK",type:"Type B"},
-    {img:"plan-height-c",bhk:"3 BHK",type:"Type C"},
-    {img:"plan-height-d",bhk:"2 BHK",type:"Type D"}],
-  sky:[
-    {img:"plan-sky-a",bhk:"2 BHK",type:"Type A"},
-    {img:"plan-sky-b",bhk:"3 BHK",type:"Type B"},
-    {img:"plan-sky-c",bhk:"3 BHK",type:"Type C"}]
+/* Paste a Matterport or 360° tour link next to a home to show its "Virtual Tour" button,
+   e.g. "height-a": "https://my.matterport.com/show/?m=XXXXXXXX" */
+const TOURS = {
+  "height-a": "", "height-b": "", "height-c": "", "height-d": "",
+  "sky-a": "", "sky-b": "", "sky-c": ""
 };
-const GALLERY=[
-  ["height-aerial","Highland Height from above"],["sky-hero","Highland Sky on the 30 m road"],["sky-interior","A living room, as rendered"],
-  ["height-dusk","Highland Height at dusk"],["sky-entrance","Highland Sky entrance"],["height-playground","Children's play area"],
-  ["sky-garden-night","Highland Sky garden in the evening"],["height-gate","The Highland Height gate"]
+
+const PROJECTS = {
+  height: { name: "Highland Height", pdf: "brochures/highland-height-brochure.pdf" },
+  sky: { name: "Highland Sky", pdf: "brochures/highland-sky-brochure.pdf" }
+};
+const HOMES = [
+  { id: "height-a", p: "height", bhk: "2 BHK", type: "Type A", iso: true, rooms: [
+    ["Drawing room", `10'0" × 18'0"`], ["Dining", `6'9" × 13'2"`], ["Kitchen", `11'6" × 7'0"`],
+    ["Bedroom 1", `10'0" × 10'6"`], ["Bedroom 2", `12'5" × 10'0"`], ["Attached toilet", `4'0" × 6'6"`],
+    ["Common toilet", `6'4" × 4'0"`], ["Balcony", `10'0" × 4'0"`], ["Wash", `7'4" × 5'0"`], ["Foyer", `5'2" × 7'4"`]] },
+  { id: "height-b", p: "height", bhk: "3 BHK", type: "Type B", iso: true, rooms: [
+    ["Drawing room", `10'6" × 18'0"`], ["Dining", `6'0" × 10'9"`], ["Kitchen + store", `11'0" × 8'3"`],
+    ["Bedroom 1", `10'0" × 10'0"`], ["Bedroom 2", `10'0" × 12'4"`], ["Bedroom 3", `10'0" × 13'7"`],
+    ["Attached toilets", `4'0" × 6'6", 5'8" × 4'6"`], ["Common toilet", `4'0" × 6'5"`],
+    ["Balcony", `10'6" × 4'0"`], ["Wash", `9'0" × 5'0"`], ["Foyer", `5'4" × 8'3"`]] },
+  { id: "height-c", p: "height", bhk: "3 BHK", type: "Type C", iso: true, rooms: [
+    ["Drawing room", `10'6" × 18'0"`], ["Dining", `6'0" × 10'9"`], ["Kitchen + store", `11'0" × 8'3"`],
+    ["Bedroom 1", `10'0" × 11'0"`], ["Bedroom 2", `10'0" × 12'0"`], ["Bedroom 3", `10'0" × 13'0"`],
+    ["Attached toilets", `4'0" × 6'5", 6'5" × 4'0"`], ["Common toilet", `4'8" × 4'0"`],
+    ["Balcony", `10'6" × 4'0"`], ["Wash", `4'0" × 7'7"`], ["Foyer", `5'4" × 8'3"`]] },
+  { id: "height-d", p: "height", bhk: "2 BHK", type: "Type D", iso: true, rooms: [
+    ["Drawing room", `16'0" × 10'6"`], ["Kitchen + dining", `15'0" × 10'0"`],
+    ["Bedroom 1", `10'0" × 10'0"`], ["Bedroom 2", `13'8" × 10'0"`], ["Attached toilet", `6'0" × 5'8"`],
+    ["Common toilet", `6'0" × 4'0"`], ["Balcony", `4'0" × 10'6"`], ["Wash", `5'0" × 10'4"`],
+    ["Store", `5'0" × 3'4"`], ["Vestibule", `5'4" × 4'0"`], ["Foyer", `5'2" × 3'2"`]] },
+  { id: "sky-a", p: "sky", bhk: "2 BHK", type: "Type A", iso: true, rooms: [
+    ["Drawing room", `10'0" × 17'0"`], ["Kitchen / dining", `9'0" × 13'6"`],
+    ["Bedroom 1", `10'0" × 11'6"`], ["Bedroom 2", `10'0" × 11'6"`], ["Toilets", `4'0" × 6'0", 4'0" × 5'6"`],
+    ["Store", `3'0" × 4'5"`], ["Balcony", `10'0" × 4'0"`], ["Wash", `7'4" × 4'8"`], ["Entry", `4'8" × 4'8"`]] },
+  { id: "sky-b", p: "sky", bhk: "3 BHK", type: "Type B", iso: true, rooms: [
+    ["Drawing room", `16'4" × 11'3"`], ["Kitchen / dining", `14'6" × 10'0"`],
+    ["Bedroom 1", `10'0" × 13'0"`], ["Bedroom 2", `10'6" × 13'0"`], ["Bedroom 3", `10'6" × 10'0"`],
+    ["Toilets", `6'2" × 4'0", 4'0" × 6'3", 5'6" × 4'0"`], ["Store", `5'0" × 6'0"`],
+    ["Balcony", `4'0" × 11'3"`], ["Wash", `5'0" × 8'0"`]] },
+  { id: "sky-c", p: "sky", bhk: "3 BHK", type: "Type C", iso: false, rooms: [
+    ["Drawing room", `11'0" × 16'4"`], ["Dining", `10'0" × 9'5"`], ["Kitchen", `9'0" × 7'5"`],
+    ["Bedrooms (3)", `10'0" × 12'0" each`], ["Toilets", `4'2" × 5'6", 4'0" × 5'10" (2)`],
+    ["Store", `3'5" × 5'0"`], ["Balcony", `11'0" × 4'0"`], ["Wash", `8'7" × 4'6"`]] }
 ];
-const $=s=>document.querySelector(s);
-const nav=$("#nav");
-const onScroll=()=>nav.classList.toggle("solid",scrollY>innerHeight*.6);
-const menuBtn=$("#menuBtn");
-const setMenu=o=>{nav.classList.toggle("open",o);menuBtn.setAttribute("aria-expanded",o)};
-menuBtn.onclick=()=>setMenu(!nav.classList.contains("open"));
-document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
-addEventListener("scroll",onScroll,{passive:true});onScroll();
+const PHOTOS = [
+  ["height-corner", "height", "Highland Height, corner view"],
+  ["sky-front", "sky", "Highland Sky, front elevation"],
+  ["height-dusk", "height", "Highland Height at dusk"],
+  ["sky-hero", "sky", "Highland Sky on the 30 m road"],
+  ["height-aerial", "height", "Highland Height from above"],
+  ["sky-aerial", "sky", "Highland Sky and its garden from above"],
+  ["height-gate", "height", "The Highland Height entrance"],
+  ["sky-entrance", "sky", "The Highland Sky entrance"],
+  ["height-garden", "height", "Landscaped garden"],
+  ["sky-garden", "sky", "Highland Sky garden"],
+  ["height-playground", "height", "Children's play area"],
+  ["sky-garden-night", "sky", "Highland Sky garden in the evening"],
+  ["height-topdown", "height", "Garden and play area from above"],
+  ["sky-interior", "sky", "Living room, sample interior"],
+  ["height-street", "height", "Highland Height from the street"]
+];
 
-const lb=$("#lb");
-function openLB(src,cap){$("#lbImg").src=src;$("#lbImg").alt=cap;$("#lbCap").textContent=cap;lb.showModal()}
-lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const wa = text => "https://wa.me/917043404301?text=" + encodeURIComponent(text);
 
-function renderPlans(key){
-  document.querySelectorAll("[role=tab]").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===key));
-  $("#planGrid").setAttribute("aria-labelledby","tab-"+key);
-  $("#planGrid").innerHTML=PLANS[key].map(p=>`<button class="plan" type="button" data-src="assets/img/${p.img}.jpg" data-cap="${p.bhk} · ${p.type}">
-    <div class="im"><img src="assets/img/${p.img}.jpg" alt="${p.bhk} unit plan, ${p.type}" loading="lazy"></div>
-    <div class="cap"><b>${p.bhk}</b><span>${p.type}</span></div></button>`).join("");
-}
-document.querySelectorAll("[role=tab]").forEach(t=>t.onclick=()=>renderPlans(t.dataset.tab));
-document.querySelectorAll("[data-plan-tab]").forEach(a=>a.addEventListener("click",()=>renderPlans(a.dataset.planTab)));
-renderPlans("height");
+/* nav */
+const nav = $("#nav"), fab = $("#fab");
+const onScroll = () => nav.classList.toggle("solid", scrollY > innerHeight * .6);
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
+const menuBtn = $("#menuBtn");
+const setMenu = o => { nav.classList.toggle("open", o); menuBtn.setAttribute("aria-expanded", o); };
+menuBtn.onclick = () => setMenu(!nav.classList.contains("open"));
+document.querySelectorAll("#navLinks a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+new IntersectionObserver(es => fab.classList.toggle("hide", es[0].isIntersecting), { threshold: .3 }).observe($("#contact"));
 
-$("#gallery").innerHTML=GALLERY.map(([f,c],i)=>`<button class="g${i+1}" type="button" data-src="assets/img/${f}.jpg" data-cap="${c}"><img src="assets/img/${f}.jpg" alt="${c}" loading="lazy"><figcaption>${c}</figcaption></button>`).join("");
-document.addEventListener("click",e=>{const b=e.target.closest("[data-src]");if(b)openLB(b.dataset.src,b.dataset.cap)});
-
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
-document.querySelectorAll(".rv").forEach(el=>io.observe(el));
-</script>
-<script type="module">
-const stage=document.getElementById("stage"),veil=document.getElementById("veil"),enter=document.getElementById("enter");
-let modP;
-const load=()=>modP??=import("./assets/walkthrough.js");
-const xbtn=document.getElementById("xbtn");
-function setFull(on){
-  stage.classList.toggle("full",on);
-  document.documentElement.style.overflow=on?"hidden":"";
-  xbtn.textContent=on?"✕":"⤢";xbtn.setAttribute("aria-label",on?"Exit full screen":"Full screen");
-  if(!on)stage.scrollIntoView({block:"center"});
-}
-xbtn.addEventListener("click",()=>setFull(!stage.classList.contains("full")));
-addEventListener("keydown",e=>{if(e.key==="Escape"&&stage.classList.contains("full"))setFull(false)});
-// Warm the module up as the section approaches so Start feels instant.
-new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){load().catch(()=>{});o.disconnect()}},{rootMargin:"600px"}).observe(stage);
-enter.addEventListener("click",async()=>{
-  enter.disabled=true;enter.lastChild.textContent=" Loading…";
-  try{const m=await load();m.start(stage);veil.classList.add("gone");stage.classList.add("on");if(matchMedia("(pointer: coarse)").matches)setFull(true)}
-  catch(err){console.error(err);document.getElementById("veilNote").textContent="Sorry, the 3D tour couldn't load on this device. The floor plans below show the same home.";enter.lastChild.textContent=" Try again";enter.disabled=false;modP=null}
+/* dialogs: lock page scroll while open, close on backdrop click */
+document.querySelectorAll("dialog").forEach(d => {
+  d.addEventListener("click", e => { if (e.target === d || e.target.closest("[data-close]")) d.close(); });
+  d.addEventListener("close", () => { if (!document.querySelector("dialog[open]")) document.documentElement.style.overflow = ""; });
 });
+function openDlg(d) { document.documentElement.style.overflow = "hidden"; if (!d.open) d.showModal(); }
+function openLB(src, cap) { $("#lbImg").src = src; $("#lbImg").alt = cap; $("#lbCap").textContent = cap; openDlg($("#lb")); }
+
+/* gallery slider */
+const track = $("#track"), thumbs = $("#thumbs");
+let shown = [];
+function buildGallery(f) {
+  document.querySelectorAll("[data-gf]").forEach(b => b.setAttribute("aria-pressed", b.dataset.gf === f));
+  shown = PHOTOS.filter(p => f === "all" || p[1] === f);
+  track.innerHTML = shown.map(([img, , cap], i) =>
+    `<figure class="slide" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${shown.length}"><img src="assets/img/${img}.jpg" alt="${esc(cap)}" ${i > 1 ? 'loading="lazy"' : ""} data-i="${i}"></figure>`).join("");
+  thumbs.innerHTML = shown.map(([img, , cap], i) =>
+    `<button type="button" data-i="${i}" aria-label="${esc(cap)}"><img src="assets/img/th/${img}.jpg" alt="" loading="lazy"></button>`).join("");
+  track.scrollLeft = 0; setCurrent(0);
+}
+let cur = 0;
+function setCurrent(i) {
+  cur = i;
+  $("#slCap").textContent = shown[i][2];
+  $("#slNum").textContent = `${i + 1} / ${shown.length}`;
+  thumbs.querySelectorAll("button").forEach((b, k) => b.setAttribute("aria-current", k === i));
+  const t = thumbs.children[i];
+  if (t) thumbs.scrollTo({ left: t.offsetLeft - (thumbs.clientWidth - t.offsetWidth) / 2, behavior: "smooth" });
+}
+const go = i => { i = (i + shown.length) % shown.length; track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" }); };
+let st;
+track.addEventListener("scroll", () => { clearTimeout(st); st = setTimeout(() => { const i = Math.round(track.scrollLeft / track.clientWidth); if (i !== cur) setCurrent(i); }, 60); }, { passive: true });
+$("#prev").onclick = () => go(cur - 1);
+$("#next").onclick = () => go(cur + 1);
+track.addEventListener("keydown", e => { if (e.key === "ArrowLeft") { e.preventDefault(); go(cur - 1); } if (e.key === "ArrowRight") { e.preventDefault(); go(cur + 1); } });
+thumbs.addEventListener("click", e => { const b = e.target.closest("button"); if (b) go(+b.dataset.i); });
+track.addEventListener("click", e => { const im = e.target.closest("img"); if (im) openLB(im.src, im.alt); });
+document.querySelectorAll("[data-gf]").forEach(b => b.onclick = () => buildGallery(b.dataset.gf));
+addEventListener("resize", () => track.scrollTo({ left: cur * track.clientWidth }));
+buildGallery("all");
+
+/* homes */
+function buildHomes(f) {
+  document.querySelectorAll("[data-hf]").forEach(b => b.setAttribute("aria-pressed", b.dataset.hf === f));
+  $("#homeGrid").innerHTML = HOMES.filter(h => f === "all" || h.p === f).map(h => `<article class="home">
+      <button class="pic" type="button" data-details="${h.id}" aria-label="Details for ${PROJECTS[h.p].name} ${h.bhk} ${h.type}"><img src="assets/img/plan2d-${h.id}.jpg" alt="${h.bhk} ${h.type} floor plan" loading="lazy"></button>
+      <div class="body">
+        <div class="proj">${PROJECTS[h.p].name}</div>
+        <h3>${h.bhk}<small>${h.type}</small></h3>
+        <ul>
+          <li><span>Drawing room</span><b>${h.rooms[0][1]}</b></li>
+          <li><span>Bedrooms</span><b>${h.bhk[0]}</b></li>
+          <li><span>Balcony</span><b>${(h.rooms.find(r => r[0] === "Balcony") || [, "–"])[1]}</b></li>
+        </ul>
+        <div class="row">
+          <button class="btn btn-solid btn-sm" type="button" data-details="${h.id}">Details</button>
+          ${TOURS[h.id] ? `<button class="btn btn-gold btn-sm" type="button" data-tour="${h.id}"><svg class="i"><use href="#i-360"/></svg>Virtual Tour</button>` : ""}
+          <a class="btn btn-line btn-sm" href="${PROJECTS[h.p].pdf}" download><svg class="i"><use href="#i-dl"/></svg>Brochure</a>
+        </div>
+      </div>
+    </article>`).join("");
+}
+document.querySelectorAll("[data-hf]").forEach(b => b.onclick = () => buildHomes(b.dataset.hf));
+document.querySelectorAll("[data-homes]").forEach(a => a.addEventListener("click", () => buildHomes(a.dataset.homes)));
+buildHomes("all");
+
+const unitDlg = $("#unitDlg");
+function showDetails(id) {
+  const h = HOMES.find(x => x.id === id), P = PROJECTS[h.p], title = `${P.name} · ${h.bhk} ${h.type}`;
+  unitDlg.innerHTML = `
+    <button class="x" type="button" aria-label="Close" data-close>×</button>
+    <div class="viz">
+      ${h.iso ? `<div class="seg" role="group" aria-label="View"><button type="button" data-v="plan2d" aria-pressed="true">Floor plan</button><button type="button" data-v="iso" aria-pressed="false">3D view</button></div>` : `<div style="height:20px"></div>`}
+      <div class="im"><img id="vizImg" src="assets/img/plan2d-${h.id}.jpg" alt="${h.bhk} ${h.type} floor plan"></div>
+    </div>
+    <div class="info">
+      <div class="eyebrow">${P.name}</div>
+      <h3 id="unitTitle">${h.bhk} <span style="color:var(--ink-faint);font-size:.6em">${h.type}</span></h3>
+      <table>${h.rooms.map(([r, s]) => `<tr><td>${r}</td><td>${s}</td></tr>`).join("")}</table>
+      <small>Sizes as printed in the ${P.name} brochure.</small>
+      <div class="row">
+        <a class="btn btn-solid" href="${wa(`Hello, I'm interested in the ${title} home. Please share the price and availability.`)}" target="_blank" rel="noopener"><svg class="i" style="width:18px;height:18px"><use href="#i-wa"/></svg>Enquire on WhatsApp</a>
+        ${TOURS[h.id] ? `<button class="btn btn-gold" type="button" data-tour="${h.id}"><svg class="i"><use href="#i-360"/></svg>Virtual Tour</button>` : ""}
+        <a class="btn btn-line" href="${P.pdf}" download><svg class="i"><use href="#i-dl"/></svg>Brochure</a>
+      </div>
+    </div>`;
+  unitDlg.querySelectorAll("[data-v]").forEach(b => b.onclick = () => {
+    unitDlg.querySelectorAll("[data-v]").forEach(x => x.setAttribute("aria-pressed", x === b));
+    const im = $("#vizImg"); im.src = `assets/img/${b.dataset.v}-${h.id}.jpg`;
+    im.alt = `${h.bhk} ${h.type} ${b.dataset.v === "iso" ? "3D view" : "floor plan"}`;
+  });
+  unitDlg.querySelector("#vizImg").onclick = e => openLB(e.target.src, title);
+  openDlg(unitDlg);
+}
+function showTour(id) {
+  const h = HOMES.find(x => x.id === id);
+  $("#tourFrame").src = TOURS[id];
+  $("#tourFrame").title = `Virtual tour of ${PROJECTS[h.p].name} ${h.bhk} ${h.type}`;
+  openDlg($("#tourDlg"));
+}
+$("#tourDlg").addEventListener("close", () => { $("#tourFrame").src = "about:blank"; });
+document.addEventListener("click", e => {
+  const d = e.target.closest("[data-details]"); if (d) return showDetails(d.dataset.details);
+  const t = e.target.closest("[data-tour]"); if (t) { if (unitDlg.open) unitDlg.close(); showTour(t.dataset.tour); }
+});
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
 </script>
 </body>
 </html>
