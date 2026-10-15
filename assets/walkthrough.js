@@ -1,7 +1,9 @@
 // First-person walkthrough of Highland Height, 2 BHK Type A.
 // All coordinates are in feet: x runs left→right across the brochure plan, z runs top→bottom.
-import * as THREE from "three";
-import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js";
+
+// Phones and small screens get a lighter scene: lower resolution, cheaper shadows, fewer lights.
+const LOW = matchMedia("(pointer: coarse)").matches || innerWidth < 760;
 
 const H = 10;          // floor-to-ceiling height
 const T = 0.45;        // wall thickness
@@ -55,19 +57,21 @@ export function start(stage) {
   started = true;
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, LOW ? 1.25 : 1.75));
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = LOW ? THREE.PCFShadowMap : THREE.PCFSoftShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   stage.prepend(renderer.domElement);
+  renderer.domElement.addEventListener("webglcontextlost", e => {
+    e.preventDefault();
+    const c = stage.querySelector("#caption");
+    c.textContent = "The 3D view stopped on this device. Reload the page to try again."; c.classList.add("on");
+  });
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0xdfe8ee);
   scene.fog = new THREE.Fog(0xdfe8ee, 260, 1500);
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-  scene.environmentIntensity = 0.45;
 
   const camera = new THREE.PerspectiveCamera(72, 1, 0.1, 4000);
   camera.rotation.order = "YXZ";
@@ -229,7 +233,9 @@ export function start(stage) {
   const resize = () => {
     const w = stage.clientWidth, h = stage.clientHeight;
     renderer.setSize(w, h, false); camera.aspect = w / h;
-    camera.fov = w < 640 ? 80 : 72; camera.updateProjectionMatrix();
+    // keep roughly 70° of side-to-side view on tall phone screens
+    camera.fov = camera.aspect < 1 ? Math.min(98, 2 * Math.atan(Math.tan(35 * Math.PI / 180) / camera.aspect) * 180 / Math.PI) : 72;
+    camera.updateProjectionMatrix();
   };
   new ResizeObserver(resize).observe(stage); resize();
   new IntersectionObserver(es => { inView = es[0].isIntersecting; if (!inView) keys.clear(); }, { threshold: 0.15 }).observe(stage);
@@ -243,7 +249,7 @@ export function start(stage) {
     if (!inView || document.hidden) return;
 
     let moving = 0;
-    if (auto) {
+    if (auto && !auto.done) {
       const [tx, tz] = auto.pts[auto.i];
       const dx = tx - me.x, dz = tz - me.z, dist = Math.hypot(dx, dz);
       const step = 4.6 * dt;
@@ -257,15 +263,15 @@ export function start(stage) {
           me.pitch += (-0.04 - me.pitch) * Math.min(1, dt * 2);
         }
       }
-      if (auto && auto.done) {
-        const [lx, ly, lz] = auto.look;
-        if (performance.now() > lookHoldUntil) {
-          me.yaw += wrap(angTo(lx, lz) - me.yaw) * Math.min(1, dt * 2.6);
-          const want = Math.atan2(ly - EYE, Math.hypot(lx - me.x, lz - me.z));
-          me.pitch += (want - me.pitch) * Math.min(1, dt * 2.2);
-        }
+    }
+    if (auto && auto.done) {
+      const [lx, ly, lz] = auto.look;
+      if (performance.now() > lookHoldUntil) {
+        me.yaw += wrap(angTo(lx, lz) - me.yaw) * Math.min(1, dt * 2.6);
+        const want = Math.atan2(ly - EYE, Math.hypot(lx - me.x, lz - me.z));
+        me.pitch += (want - me.pitch) * Math.min(1, dt * 2.2);
       }
-    } else {
+    } else if (!auto) {
       let f = 0, s = 0;
       if (keys.has("f")) f += 1; if (keys.has("b")) f -= 1;
       if (keys.has("r")) s += 1; if (keys.has("l")) s -= 1;
@@ -626,16 +632,17 @@ function buildApartment(scene, solids) {
 }
 
 function buildLights(scene) {
-  scene.add(new THREE.HemisphereLight(0xeaf2ff, 0xb8a58c, 0.55));
+  scene.add(new THREE.HemisphereLight(0xeaf2ff, 0xb8a58c, LOW ? 1.5 : 0.9));
+  if (LOW) scene.add(new THREE.AmbientLight(0xfff4e6, 0.35));
   const sun = new THREE.DirectionalLight(0xfff0d8, 3.2);
   sun.position.set(13.5 + 120, 95, 14 - 70);
   sun.target.position.set(13.5, 0, 14);
   sun.castShadow = true;
-  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.mapSize.set(LOW ? 1024 : 2048, LOW ? 1024 : 2048);
   Object.assign(sun.shadow.camera, { left: -26, right: 26, top: 26, bottom: -26, near: 60, far: 300 });
   sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.04;
   scene.add(sun, sun.target);
-  for (const [x, z, i] of [[22, 13, 34], [13.2, 16, 22], [11, 5, 18], [5, 19, 18], [16, 26, 16], [24.5, 25.5, 9], [2.2, 7, 6]]) {
+  if (!LOW) for (const [x, z, i] of [[22, 13, 34], [13.2, 16, 22], [11, 5, 18], [5, 19, 18], [16, 26, 16], [24.5, 25.5, 9], [2.2, 7, 6]]) {
     const l = new THREE.PointLight(0xffe2bd, i, 30, 1.4);
     l.position.set(x, H - 1.2, z); scene.add(l);
   }
@@ -665,7 +672,7 @@ function buildOutside(scene) {
 
   // trees
   const rnd = (a, b) => a + Math.random() * (b - a);
-  const N = 520;
+  const N = LOW ? 240 : 520;
   const crowns = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1, 1), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.95, flatShading: true }), N);
   const trunks = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.6, 0.9, 1, 6), new THREE.MeshStandardMaterial({ color: 0x5b4636 }), N);
   const m = new THREE.Matrix4(), q = new THREE.Quaternion(), s = new THREE.Vector3(), p = new THREE.Vector3(), col = new THREE.Color();
