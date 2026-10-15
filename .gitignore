@@ -1,3 +1,5 @@
 .claude-flow/
 .DS_Store
 .vercel
+.swarm/
+ruvector.db
