@@ -94,7 +94,7 @@ svg.i{width:16px;height:16px;flex:none}
 .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 30%;animation:drift 22s ease-out both}
 @keyframes drift{from{transform:scale(1.08)}to{transform:scale(1)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,16,14,.72) 0%,rgba(20,16,14,.42) 38%,rgba(20,16,14,0) 62%),linear-gradient(180deg,rgba(20,16,14,.4) 0%,rgba(20,16,14,0) 22%,rgba(20,16,14,0) 55%,rgba(20,16,14,.65) 100%)}
-.hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(48px,8vh,96px)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:112px;padding-bottom:clamp(48px,8vh,96px)}
 .hero .eyebrow{color:rgba(255,255,255,.85)}
 .hero h1{font-size:clamp(48px,8.4vw,112px);font-weight:400;max-width:12ch;line-height:.98;margin-top:14px}
 .hero h1 em{font-style:italic;color:var(--gold-soft)}
@@ -103,7 +103,14 @@ svg.i{width:16px;height:16px;flex:none}
 .hero .meta{display:flex;flex-wrap:wrap;gap:10px 34px;margin-top:clamp(36px,6vh,64px);padding-top:22px;border-top:1px solid rgba(255,255,255,.28);font-size:13.5px;color:rgba(255,255,255,.82)}
 .hero .meta b{display:block;font:500 26px/1.1 var(--f-display);color:#fff;letter-spacing:.01em}
 @media (max-width:700px){.hero::after{background:linear-gradient(180deg,rgba(20,16,14,.5) 0%,rgba(20,16,14,.4) 30%,rgba(20,16,14,.85) 100%)}}
-@media (max-width:520px){.hero .meta{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}.hero h1{font-size:clamp(44px,13vw,60px)}.hero .ctas .btn{flex:1 1 100%}}
+@media (max-width:520px){
+  .hero .wrap{padding-top:100px;padding-bottom:36px}
+  .hero h1{font-size:clamp(42px,12vw,56px)}
+  .hero p{font-size:15.5px;margin:16px 0 24px}
+  .hero .ctas{gap:10px}.hero .ctas .btn{flex:1 1 100%;padding:13px 20px}
+  .hero .meta{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:8px;margin-top:28px;padding-top:16px;font-size:12px}
+  .hero .meta b{font-size:20px}
+}
 
 /* projects */
 .projects{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
@@ -146,8 +153,8 @@ svg.i{width:16px;height:16px;flex:none}
 .homes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:clamp(16px,2vw,28px)}
 .home{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s,transform .3s}
 .home:hover{box-shadow:0 22px 44px -28px rgba(60,40,20,.4);transform:translateY(-2px)}
-.home .pic{aspect-ratio:5/4;background:#fff;padding:16px;display:grid;place-items:center;border:0;cursor:zoom-in;border-bottom:1px solid var(--line)}
-.home .pic img{max-height:100%;width:auto;object-fit:contain}
+.home .pic{position:relative;display:block;width:100%;aspect-ratio:5/4;background:#fff;padding:0;border:0;cursor:zoom-in;border-bottom:1px solid var(--line);overflow:hidden}
+.home .pic img{position:absolute;top:16px;left:16px;width:calc(100% - 32px);height:calc(100% - 32px);max-width:none;object-fit:contain}
 .home .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:12px;flex:1}
 .home .proj{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 .home h3{font-size:30px}
@@ -499,7 +506,7 @@ footer p{margin:0;max-width:70ch}
   </div>
 </footer>
 
-<a class="fab" id="fab" href="https://wa.me/917043404301?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20Highland." target="_blank" rel="noopener" aria-label="WhatsApp us"><svg><use href="#i-wa"/></svg><span>Book a visit</span></a>
+<a class="fab hide" id="fab" href="https://wa.me/917043404301?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20Highland." target="_blank" rel="noopener" aria-label="WhatsApp us"><svg><use href="#i-wa"/></svg><span>Book a visit</span></a>
 
 <dialog class="sheet" id="unitDlg" aria-labelledby="unitTitle"></dialog>
 <dialog class="tour" id="tourDlg" aria-label="Virtual tour">
@@ -582,13 +589,17 @@ const wa = text => "https://wa.me/917043404301?text=" + encodeURIComponent(text)
 
 /* nav */
 const nav = $("#nav"), fab = $("#fab");
-const onScroll = () => nav.classList.toggle("solid", scrollY > innerHeight * .6);
+let atContact = false;
+const onScroll = () => {
+  nav.classList.toggle("solid", scrollY > innerHeight * .6);
+  fab.classList.toggle("hide", atContact || scrollY < innerHeight * .6); // keep the hero clear
+};
 addEventListener("scroll", onScroll, { passive: true }); onScroll();
 const menuBtn = $("#menuBtn");
 const setMenu = o => { nav.classList.toggle("open", o); menuBtn.setAttribute("aria-expanded", o); };
 menuBtn.onclick = () => setMenu(!nav.classList.contains("open"));
 document.querySelectorAll("#navLinks a").forEach(a => a.addEventListener("click", () => setMenu(false)));
-new IntersectionObserver(es => fab.classList.toggle("hide", es[0].isIntersecting), { threshold: .3 }).observe($("#contact"));
+new IntersectionObserver(es => { atContact = es[0].isIntersecting; onScroll(); }, { threshold: .3 }).observe($("#contact"));
 
 /* dialogs: lock page scroll while open, close on backdrop click */
 document.querySelectorAll("dialog").forEach(d => {
